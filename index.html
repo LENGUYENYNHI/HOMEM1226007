@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Nguyễn Ý Nhi - Website Cá Nhân</title>
+    <style>
+        /* Hệ màu sắc nhà nghiên cứu lúa - tông dịu nhẹ và đặc sắc */
+        :root {
+            --primary-green: #4A6B42; /* Màu xanh lá lúa thuần túy */
+            --soft-gold: #E6C57E;     /* Màu vàng hạt lúa chín pastel */
+            --light-rice: #F7F5EE;    /* Màu kem gạo dịu mắt */
+            --dark-grass: #2C3E25;    /* Màu xanh cỏ đậm cho chữ */
+            --border-color: #A3B899;  /* Màu xanh lúa non cho khung viền */
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-rice);
+            color: var(--dark-grass);
+            line-height: 1.7;
+            padding-bottom: 60px;
+        }
+
+        /* Khung ghi chú đầu trang (Header) có nền ảnh bông lúa */
+        header {
+            position: relative;
+            background: linear-gradient(rgba(74, 107, 66, 0.8), rgba(44, 62, 37, 0.85)), 
+                        url('651504085_2849565308708520_2931081362657711454_n.jpg') no-repeat center center;
+            background-size: cover;
+            color: var(--white);
+            text-align: center;
+            padding: 85px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--soft-gold);
+        }
+
+        /* Thanh menu ghi chú đầu trang để người xem bấm vào mục coi cho dễ */
+        nav {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 12px;
+        }
+
+        nav a {
+            color: var(--primary-green);
+            text-decoration: none;
+            padding: 8px 18px;
+            margin: 5px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            background-color: var(--primary-green);
+            color: var(--white);
+            border-color: var(--primary-green);
+        }
+
+        /* Container chính */
+        .container {
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Thiết kế tách riêng từng mục và đóng khung viền riêng biệt */
+        section {
+            background-color: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .section-title {
+            color: var(--primary-green);
+            border-bottom: 2px solid var(--soft-gold);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+        }
+
+        /* Bố cục: NỘI DUNG BÊN TRÁI - HÌNH ẢNH BÊN PHẢI */
+        .section-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .section-content {
+            flex: 1.2; /* Tỉ lệ cho nội dung bên trái */
+        }
+
+        /* Khung chứa ảnh điều chỉnh tối ưu hiển thị trọn vẹn */
+        .image-wrapper {
+            flex: 0.8; /* Tỉ lệ cho hình ảnh bên phải */
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 10px;
+            max-height: 420px;
+        }
+
+        .section-image {
+            max-width: 100%;
+            max-height: 380px;
+            object-fit: contain; /* Đảm bảo thấy trọn vẹn 100% hình ảnh không bị xén */
+            display: block;
+            border-radius: 4px;
+        }
+
+        /* Định dạng hiển thị văn bản chi tiết */
+        .info-item {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            border-bottom: 1px dashed #f0f0f0;
+            padding-bottom: 8px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: var(--primary-green);
+            display: inline-block;
+            width: 160px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        /* Ký hiệu bông lúa cách điệu cho các dòng danh sách */
+        ul li::before {
+            content: "🌾";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 0.9rem;
+        }
+
+        .job-block {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eef2ed;
+        }
+        
+        .job-block:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .job-title {
+            font-weight: bold;
+            font-size: 1.15rem;
+            color: #1a3014;
+        }
+
+        .job-company {
+            font-style: italic;
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        /* Bố cục Sở thích: 2 cột chứa thông tin chi tiết */
+        .hobby-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .hobby-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            background-color: var(--light-rice);
+        }
+
+        /* Vẽ và Du lịch: Nội dung trái - Hình phải */
+        .hobby-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .hobby-text {
+            flex: 1;
+        }
+
+        .hobby-image-wrapper {
+            flex: 1;
+            height: 200px;
+            background-color: var(--white);
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .hobby-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Đảm bảo thấy trọn vẹn tranh vẽ hoặc ảnh chụp */
+        }
+
+        /* Responsive cho thiết bị di động */
+        @media (max-width: 768px) {
+            .section-layout {
+                flex-direction: column; /* Chuyển về hàng dọc khi màn hình nhỏ */
+            }
+            .hobby-container {
+                grid-template-columns: 1fr;
+            }
+            .hobby-layout {
+                flex-direction: column;
+            }
+            .info-label {
+                display: block;
+                width: 100%;
+                margin-bottom: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lê Nguyễn Ý Nhi</h1>
+        <p>Nghiên Cứu Viên - Viện Lúa Đồng Bằng Sông Cửu Long</p>
+    </header>
+
+    <nav>
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#hoc-van">Học vấn</a>
+        <a href="#kinh-nghiem">Kinh nghiệm</a>
+        <a href="#chung-chi">Chứng chỉ</a>
+        <a href="#ky-nang">Kỹ năng</a>
+        <a href="#hoat-dong">Hoạt động</a>
+        <a href="#so-thich">Sở thích</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="gioi-thieu">
+            <h2 class="section-title">Giới Thiệu Bản Thân</h2>
+            <div class="section-layout">
+                <div class="section-content">
+                    <div class="info-item"><span class="info-label">Họ và tên:</span>LÊ NGUYỄN Ý NHI</div>
+                    <div class="info-item"><span class="info-label">Ngày sinh:</span>08/07/1998</div>
+                    <div class="info-item"><span class="info-label">Số điện thoại:</span>0907914659</div>
+                    <div class="info-item"><span class="info-label">Email:</span>nhib1604340@gmail.com</div>
+                    <div class="info-item"><span class="info-label">Địa chỉ:</span>Ô Môn - Cần Thơ</div>
+                </div>
+                <div class="image-wrapper">
+                    <img class="section-image" src="500990612_2577063785958675_6221298110546019551_n.jpg" alt="Ảnh áo dài trắng">
+                </div>
+            </div>
+        </section>
+
+        <section id="hoc-van">
+            <h2 class="section-title">Học Vấn</h2>
+            <div class="section-layout">
+                <div class="section-content">
+                    <div class="info-item"><span class="info-label">Trình độ:</span>KỸ SƯ</div>
+                    <div class="info-item"><span class="info-label">Trường đào tạo:</span>Đại Học Cần Thơ</div>
+                    <div class="info-item"><span class="info-label">Thời gian học:</span>05/2016 - 03/2020</div>
+                    <div class="info-item"><span class="info-label">Xếp loại:</span>Giỏi</div>
+                    <div class="info-item"><span class="info-label">Sau đại học:</span>K33 - Đại học Cần Thơ</div>
+                </div>
+                <div class="image-wrapper">
+                    <img class="section-image" src="486849882_2513339548997766_2135488034200053211_n.jpg" alt="Ảnh nhận bằng">
+                </div>
+            </div>
+        </section>
+
+        <section id="kinh-nghiem">
+            <h2 class="section-title">Kinh Nghiệm Làm Việc</h2>
+            <div class="section-layout">
+                <div class="section-content">
+                    
+                    <div class="job-block">
+                        <div class="job-title">NGHIÊN CỨU VIÊN</div>
+                        <div class="job-company">Viện Lúa Đồng Bằng Sông Cửu Long | 12/2023 - nay</div>
+                        <ul>
+                            <li>Nghiên cứu, thực hiện các đề tài dự án về nông nghiệp.</li>
+                            <li>Đề xuất các phương pháp, kỹ thuật mới và thực hiện với quy mô thí nghiệm, mô hình.</li>
+                            <li>Tập huấn chuyển giao công nghệ mới cho nông dân.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-block">
+                        <div class="job-title">NHÂN VIÊN MARKETING THU NGÂN</div>
+                        <div class="job-company">Co.opmart Bình Thủy | 05/2022 - 04/2023</div>
+                        <ul>
+                            <li>Thiết kế, xây dựng kênh bán hàng online, quản lý và theo dõi các chương trình quảng cáo.</li>
+                            <li>Tính tiền ở két, hoàn thiện sổ sách thu chi theo ngày.</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="image-wrapper">
+                    <img class="section-image" src="722859721_2936375630027487_6094817368681329068_n.jpg" alt="Ảnh đoàn Viện">
+                </div>
+            </div>
+        </section>
+
+        <section id="chung-chi">
+            <h2 class="section-title">Chứng Chỉ</h2>
+            <ul>
+                <li>Chứng chỉ Anh văn Vstep: B1</li>
+                <li>Chứng chỉ kế toán doanh nghiệp - khai báo thuế</li>
+                <li>Chứng chỉ ứng dụng tin học cơ bản</li>
+            </ul>
+        </section>
+
+        <section id="ky-nang">
+            <h2 class="section-title">Kỹ Năng</h2>
+            <ul>
+                <li>Có khả năng thuyết trình, làm việc nhóm tốt.</li>
+                <li>Có thể dịch thuật tài liệu tiếng Anh nông nghiệp.</li>
+                <li>Có khả năng sử dụng tiếng Pháp cấp độ sơ cấp.</li>
+            </ul>
+        </section>
+
+        <section id="hoat-dong">
+            <h2 class="section-title">Hoạt Động</h2>
+            <ul>
+                <li>Thành viên đoàn Thanh niên khoa, thành viên tích cực câu lạc bộ hiến máu nhân đạo.</li>
+                <li>Tham gia ban cán sự lớp trong suốt quá trình học tập tại trường.</li>
+            </ul>
+        </section>
+
+        <section id="so-thich">
+            <h2 class="section-title">Sở Thích Cá Nhân</h2>
+            <div class="hobby-container">
+                
+                <div class="hobby-card">
+                    <div class="hobby-layout">
+                        <div class="hobby-text">
+                            <h3 style="color: var(--primary-green); margin-bottom: 8px;">Hội Họa & Vẽ</h3>
+                            <p style="font-size: 0.95rem; color: #555;">Thích vẽ nghệ thuật tĩnh vật, sáng tạo màu sắc.</p>
+                        </div>
+                        <div class="hobby-image-wrapper">
+                            <img class="hobby-image" src="123560366_1343319989333067_1698266061329836228_n.jpg" alt="Ảnh hoa trong giày">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hobby-card">
+                    <div class="hobby-layout">
+                        <div class="hobby-text">
+                            <h3 style="color: var(--primary-green); margin-bottom: 8px;">Du lịch trải nghiệm</h3>
+                            <p style="font-size: 0.95rem; color: #555;">Yêu thích khám phá các danh lam thắng cảnh cùng bạn bè và đồng nghiệp.</p>
+                        </div>
+                        <div class="hobby-image-wrapper">
+                            <img class="hobby-image" src="1784082403201_277860160040601764_3611048377680232290_a295722574d1256f9d4049d709a54d80.jpg" alt="Ảnh 3 người">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
